@@ -64,3 +64,4 @@ for i = 1: 4
     title_str = ['Reproduced polynomials (using dB4) degree ' num2str(i-1)];
     title(title_str);
 end
+
