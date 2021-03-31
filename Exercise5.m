@@ -8,11 +8,11 @@ t = 0: max_len - 1;
 T = 64;
 t = t/T;
 
-%% Load the given data
+% Load the given data
 load('samples.mat');
 tau = y_sampled * c_matrix'; % Create tau matrix
 
-%% Get the filter h
+% Get the filter h
 N = momen;
 K = 2;
 %prog_K = K + 1;
@@ -29,7 +29,7 @@ end
 y_tau_1 = - tau(K + 1: N);
 h = matrix_tau \ y_tau_1'; % Solve the matrix to get filter h
 
-%% Get the t_n
+% Get the t_n
 % Create the equation
 syms x;
 decom = 1; % h0 is 1
@@ -39,7 +39,7 @@ end
 
 t_k=double(solve(decom,x)); %By solving the equation, we can get t_k.
 
-%% Calculate a_n
+% Calculate a_n
 matrix_t=[];
 for i = 1:K
     matrix_t = [matrix_t, 1]; %The first line
@@ -56,7 +56,7 @@ end
 y_tau_2 = tau(1:K);
 a_k = matrix_t \ y_tau_2'; % Solve the matrix to get the ak
 
-%% Plotting recovered Diracs
+% Plotting recovered Diracs
 figure;
 stem(t_k,a_k);
 xlabel('t');
