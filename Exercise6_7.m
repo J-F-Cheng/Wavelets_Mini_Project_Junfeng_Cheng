@@ -7,26 +7,26 @@ for momen = 5: 10 %Try different degrees, from 5 to 10
 % Get the shifted kernels
 [shifted_kernels, c_matrix] = obtainC_kernels_dB(momen);
 
-%% Generate diracs
+% Generate diracs
 
 signal_diracs = zeros(1, 2048);
 for i = 1 : length(amp)
     signal_diracs(ceil(loca(i) * T)) = amp(i);
 end
 
-%% Generate s and tau
+% Generate s and tau
 yn =  signal_diracs * shifted_kernels'; % Sampled signal
 tau = yn * c_matrix';
 
-%% Generate noise
+% Generate noise
 noise_var = 1; % noise variance
 noise_mean = 0;
 noise = noise_mean + rand(1, momen) * sqrt(noise_var);
 
-%% Add noise
+% Add noise
 tau = tau + noise; % Need to be the same signal
 
-%% Get the filter h using TLS
+% Get the filter h using TLS
 N = momen;
 K = 2 + 1;
 %prog_K = K + 1;
@@ -45,7 +45,7 @@ h = tau_V(:, length(tau_V));
 %clear tau_U
 %clear tau_S
 %clear tau_V
-%% Get the t_n
+% Get the t_n
 % Create equation
 syms x;
 %decom = 1; % h0 is 1
@@ -59,7 +59,7 @@ result=double(solve(decom,x)); % Solve equation to tget tn
 t_TLS = sort(result);
 %decom_new = factor(decom)
 
-%% Calculate a_n
+% Calculate a_n
 matrix_t=[];
 for i = 1:K-1
     matrix_t = [matrix_t, 1]; %The first line
@@ -76,7 +76,7 @@ end
 y_tau_2 = tau(1:K-1);
 a_TLS = matrix_t \ y_tau_2'; % Solve the matrix to get ak
 
-%% Get the filter h using Cadzow
+% Get the filter h using Cadzow
 %prog_K = K + 1;
 % Create matrix tau
 matrix_tau=[];
@@ -116,7 +116,7 @@ end
 %[tau_U, tau_S, tau_V] = svd(matrix_tau);
 h = tau_V(:, length(tau_V));
 
-%% Get the t_n
+% Get the t_n
 % Create equation
 syms x;
 %decom = 1; % h0 is 1
@@ -130,7 +130,7 @@ result=double(solve(decom,x)); % Solve the equation
 t_Cadzow = sort(result);
 %decom_new = factor(decom)
 
-%% Calculate a_n
+% Calculate a_n
 matrix_t=[];
 for i = 1:K-1
     matrix_t = [matrix_t, 1]; %The first line
@@ -147,7 +147,7 @@ end
 y_tau_2 = tau(1:K-1);
 a_Cadzow = matrix_t \ y_tau_2'; % Solve the matrix to get a
 
-%% Plotting all
+% Plotting all
 subplot(3, 2, momen - 4);
 h1 = stem(t_TLS, a_TLS, 'filled'); %The results by using TLS
 hold on;
