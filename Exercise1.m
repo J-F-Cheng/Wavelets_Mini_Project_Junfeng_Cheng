@@ -42,7 +42,7 @@ for i = 1: len
 end
 cn = [c0n; c1n; c2n; c3n]; % Combine the sampled signals
 
-%% Reconstruction
+% Reconstruction
 fx0 = c0n * shifted_kernels;
 fx1 = c1n * shifted_kernels;
 fx2 = c2n * shifted_kernels;
@@ -50,7 +50,7 @@ fx3 = c3n * shifted_kernels;
 fx = [fx0; fx1; fx2; fx3];
 
 figure;
-%% Plotting all the diagrams
+% Plotting all the diagrams
 for i = 1: 4
     subplot(2,2,i);
     h1 = plot(t, tn(i,:), 'k');
