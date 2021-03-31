@@ -6,7 +6,7 @@ t = 0: max_len - 1; % Set time
 T = 64; % Set period
 t = t/T; % Get the real time
 
-%% Get the filter h
+% Get the filter h
 K = 2;
 degree_L = 3; %degree >= 2K-1
 N = degree_L+1; 
@@ -25,7 +25,7 @@ end
 y_tau_1 = - tau(K + 1: N);
 h = matrix_tau \ y_tau_1'; % Solve the matrix to get filter h
 
-%% Get the t_n
+% Get the t_n
 
 syms x;
 decom = 1; % h0 is 1
@@ -37,7 +37,7 @@ t_k=double(solve(decom,x)); %By solving the equation, we can get t_k.
 %t_k = sort(1./result);
 %decom_new = factor(decom)
 
-%% Calculate a_n
+% Calculate a_n
 matrix_t=[];
 for i = 1:K
     matrix_t = [matrix_t, 1]; %The first line
@@ -53,7 +53,7 @@ end
 
 y_tau_2 = tau(1:K);
 a_k = matrix_t \ y_tau_2'; % Solve the matrix to get ak
-%% Plot all the diagrams
+% Plot all the diagrams
 figure;
 stem(t_k,a_k);
 xlabel('t');
