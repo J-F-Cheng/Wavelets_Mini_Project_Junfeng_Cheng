@@ -1,4 +1,4 @@
-%% Generate Bspline scaling functino and its dual
+% Generate Bspline scaling functino and its dual
 
 function [dual_phi_Bn, phi_Bn] = BSpline(BSplineN)
 %BSPLINE Summary of this function goes here
