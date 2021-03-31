@@ -1,6 +1,5 @@
 clear all
 %% Use inner product to calcluate cmn
-
 t = 0: 2048 - 1; % Set time
 T = 64; % Set period
 t = t/T; % Set the real time
