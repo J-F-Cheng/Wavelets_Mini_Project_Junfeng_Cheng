@@ -49,7 +49,7 @@ function [Tx_RGB Ty_RGB]= ImageRegistration
 % -------- include your code here -----------
 
 load('PolynomialReproduction_coef.mat','Coef_0_0','Coef_1_0','Coef_0_1');
-%% Calculate xbar ybar for the first image
+% Calculate xbar ybar for the first image
 img1 = imread('LR_Tiger_01.tif');
 
 %set threshold
@@ -73,7 +73,7 @@ Ty_RGB = zeros(40, 3);
 
 %Tx_RGB(1, :) = dx1;
 %Ty_RGB(1, :) = dy1;
-%% FLow the similar routine above to calculate the dx dy of the other images
+% FLow the similar routine above to calculate the dx dy of the other images
 
 numFormat = '%02d';
 for img_num = 2: 40
@@ -94,7 +94,7 @@ for img_num = 2: 40
 end
 end
 
-%% The funciton to get Xbar and Ybar
+% The funciton to get Xbar and Ybar
 function [xbar, ybar] = getXYbar(imgRGBm)
 xbar = zeros(1, 3);
 ybar = zeros(1, 3);
