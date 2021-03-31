@@ -1,7 +1,7 @@
 function [shifted_kernels, c_matrix] = obtainC_kernels_dB(dBValue)
 %OBTAINCMATRIX Summary of this function goes here
 %   Detailed explanation goes here
-%% Use inner product to calcluate cmn
+% Use inner product to calcluate cmn
 
 
 t = 0: 2048-1;
