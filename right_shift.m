@@ -1,4 +1,4 @@
-%% The function for right shift
+% The function for right shifting
 
 function [shifted] = right_shift(signal, N)
     len=length(signal);
