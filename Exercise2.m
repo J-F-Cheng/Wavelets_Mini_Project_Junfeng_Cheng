@@ -1,5 +1,5 @@
 clear all
-%% Use inner product to calcluate cmn
+% Use inner product to calcluate cmn
 
 t = 0: 2048 - 1; % Set time
 T = 64; % Set period
@@ -44,7 +44,7 @@ for i = 1: len
 end
 cn = [c0n; c1n; c2n; c3n]; % Combine as a matrix
 
-%% Reconstruction
+% Reconstruction
 fx0 = c0n * shifted_kernels_recon;
 fx1 = c1n * shifted_kernels_recon;
 fx2 = c2n * shifted_kernels_recon;
@@ -52,7 +52,7 @@ fx3 = c3n * shifted_kernels_recon;
 fx = [fx0; fx1; fx2; fx3];
 
 figure;
-%% Plot all the diagrams
+% Plot all the diagrams
 for i = 1: 4
     subplot(2,2,i);
     h1 = plot(t, tn(i,:), 'k');
